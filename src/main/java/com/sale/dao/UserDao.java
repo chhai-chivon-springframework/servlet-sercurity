@@ -31,23 +31,23 @@ public class UserDao {
 		}
 		return arr;
 	}
-	
-	public Users createUser(Users user){		
+
+	public Users createUser(Users user){
 		try {
 			String sql = "INSERT INTO user_tbl (username, password) VALUES (?, ?)";
-			PreparedStatement pst = Connections.open().prepareStatement(sql);			
+			PreparedStatement pst = Connections.open().prepareStatement(sql);
 				pst.setString(1, user.getUsername());
 				pst.setString(2, user.getPassword());
 			if(pst.executeUpdate()>0){
 				Connections.close();
 				System.out.println("Your user have been created..! ");
-			}			
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return user;
 	}
-	
+
 	public Users updateUser(Users user) {
 		try {
 			String sql = "UPDATE user_tbl SET username=?, password=? WHERE id=?";
@@ -76,5 +76,15 @@ public class UserDao {
 		}
 		return user;
 	}
-	
+
+	public Users authenticate(String userName,String passWord){
+
+		/*
+			just do simple query from database
+			SELECT * FROM table_user WHERE user_name=? AND pass_word=?
+			and then return object user that u query from database
+		*/
+		return new Users(192l,userName,passWord);
+	}
+
 }

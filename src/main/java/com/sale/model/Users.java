@@ -3,13 +3,13 @@ package com.sale.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Users {
-	@JsonProperty("ID")
+
 	private Long id ;
-	@JsonProperty("NAME")
+
 	private String username;
-	@JsonProperty("PASSWORD")
+
 	private String password;
-	
+
 	public Users(){
 		super();
 	}
@@ -41,5 +41,5 @@ public class Users {
 		this.username = username;
 		this.password = password;
 	}
-	
+
 }
